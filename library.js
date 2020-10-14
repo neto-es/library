@@ -1,73 +1,58 @@
-// Utilizando el array de usuarios de clases pasadas y tomando como base algunos ejercicios
-//  hice esta implementación de los métodos
+// Utilizando el array de autos de clases pasadas y tomando como base algunos ejercicios
+// hice esta implementación de los métodos
 
 
-const users = [
+const cars = [
     {
-        name: 'Erik',
-        age: 29,
-        email: 'erik@academlo.com',
-        social: [
-            { name: 'facebook', url: 'facebook/erik' },
-            { name: 'twitter', url: 'twitter/erik' }
-        ],
-        gender: 'Male'
+        brand: 'Chevrolet',
+        model: 'Aveo',
+        color: 'Rojo',
+        year: 2020,
+        price: 11000
     },
     {
-        name: 'Georg',
-        age: 33,
-        email: 'georg@academlo.com',
-        social: [
-            { name: 'facebook', url: 'facebook/georg' },
-            { name: 'twitter', url: 'twitter/georg' }
-        ],
-        gender: 'Male'
+        brand: 'Ford',
+        model: 'Fiesta',
+        color: 'Azul',
+        year: 2012,
+        price: 8000
     },
     {
-        name: 'Andrea',
-        age: 42,
-        email: 'andrea@hotmail.com',
-        social: [
-            { name: 'facebook', url: 'facebook/andrea' },
-            { name: 'twitter', url: 'twitter/andrea' }
-        ],
-        gender: 'Female'
+        brand: 'Volkswagen',
+        model: 'Vento',
+        color: 'Blanco',
+        year: 2006,
+        price: 10000
     },
     {
-        name: 'Oscar',
-        age: 31,
-        email: 'oscar@academlo.com',
-        social: [
-            { name: 'facebook', url: 'facebook/oscar' },
-            { name: 'twitter', url: 'twiter/oscar' }
-        ],
-        gender: 'Male'
+        brand: 'Nissan',
+        model: 'Versa',
+        color: 'Naranja',
+        year: 2015,
+        price: 14000
     },
     {
-        name: 'Daniela',
-        age: 22,
-        email: 'andrea@uaq.mx',
-        social: [
-            { name: 'facebook', url: 'facebook/andrea' },
-            { name: 'twitter', url: 'twitter/andrea' }
-        ],
-        gender: 'Female'
-    },
-]
+        brand: 'KIA',
+        model: 'Rio Sedan',
+        color: 'Negro',
+        year: 2010,
+        price: 12500
+    }
+];
 
-//Método forEach imprime cada uno de los usuarios
+//Método forEach imprime cada uno de los autos
 function myForEach(array, callback) {
     for (let i = 0; i < array.length; i++){
         callback(array[i]);
     }
 }
-console.log('forEach (todos los usuarios): ')
-forEacUsers = myForEach(users, user => console.log(user));
+console.log('forEach (todos los autos): ')
+forEachCars = myForEach(cars, car => console.log(car));
 
 
 
 
-//Método Filter imprime los usuarios de más de 30 años
+//Método Filter imprime los autos de 2012 en adelante
 function myFilter(array, callback) {
     const newArray = [];
     for (let i = 0; i < array.length; i++){
@@ -77,14 +62,14 @@ function myFilter(array, callback) {
     }
     return newArray;
 }
-console.log('Filter (mayores a 30 años): ')
-const ageFilter = myFilter(users, user => user.age > 30);
-console.log(ageFilter);
+console.log('Filter (autos de 2012 en adelante): ')
+const yearFilter = myFilter(cars, car => car.year > 2011);
+console.log(yearFilter);
 
 
 
 
-// Método Map imprime los correos de los usuarios
+// Método Map imprime todas las marcas
 function myMap(array, callback) {
     const newArray = [];
     for (let i = 0; i < array.length; i++){
@@ -92,14 +77,14 @@ function myMap(array, callback) {
     }
     return newArray;
 }
-console.log('Map (imprime todos los correoas): ');
-const mapEmails = myMap(users, user => user.email);
-console.log(mapEmails);
+console.log('Map (imprime las marcas de autos): ');
+const mapBrands = myMap(cars, car => car.brand);
+console.log(mapBrands);
 
 
 
 
-// Método Find busca un usuario en específico
+// Método Find busca un elemento en específico del array
 function myFind(array, callback) {
     for(let i = 0; i < array.length; i++ ) {
         if(callback(array[i]) === true) {
@@ -107,13 +92,13 @@ function myFind(array, callback) {
         }
     }
 }
-console.log('Find (busca e imprime el usuario Erik): ');
-const findUser = myFind(users, user => user.name === 'Erik');
-console.log (findUser);
+console.log('Find (busca el auto modelo Versa): ');
+const findCar = myFind(cars, car => car.model === 'Versa');
+console.log(findCar);
 
 
 
-// Método FindIndex busca la posición de un usuario
+// Método FindIndex busca un elemento en una posición específica
 function myFindIndex(array, callback) {
     for(let i = 0; i < array.length; i++ ) {
         if(callback(array[i]) === true) {
@@ -121,16 +106,15 @@ function myFindIndex(array, callback) {
         }
     }
 }
-console.log('FindIndex (busca la posición del usuario Óscar): ');
-const findindexUser = myFindIndex(users, user => user.name === 'Oscar');
-console.log (findindexUser);
+console.log('FindIndex (busca la posición de la marca Volkswagen): ');
+const findindexCar = myFindIndex(cars, car => car.brand === 'Volkswagen');
+console.log(findindexCar);
 
 
 
 
-// Método Contains imprime true si el valor se encuentra en los usuarios
-console.log('');
-const vals = [1, 2, 3];
+// Método Contains imprime true si el valor se encuentra en el array
+const vals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function myContains(array, callback) {
         for(let i = 0; i < array.length; i++ ) {
         if(array[i] === callback(array)) {
@@ -139,13 +123,13 @@ function myContains(array, callback) {
     }
     return false;
 }
-console.log('Contains (busca si el array CONTIENE el valor):');
-const containsNumber = myContains(vals, val => val = 2);
+console.log('Contains (busca un valor en el array e imprime true si lo encuentra):');
+const containsNumber = myContains(vals, val => val = 7);
 console.log (containsNumber);
 
 
 
-// Método Pluck imprime los nombres de los usuarios
+// Método Pluck imprime los precios de los autos
 function myPluck(array, callback) {
     const newArray = [];
     for (let i = 0; i < array.length; i++){
@@ -153,6 +137,6 @@ function myPluck(array, callback) {
     }
     return newArray;
 }
-const pluckNames = myPluck(users, key => key = 'name');
-console.log('Pluck (imprime sólo los nombres de los usuarios)');
-console.log(pluckNames);
+const pluckPrices = myPluck(cars, key => key = 'price');
+console.log('Pluck (imprime los precios de los autos):');
+console.log(pluckPrices);
